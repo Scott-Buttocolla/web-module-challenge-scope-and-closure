@@ -26,11 +26,11 @@ function processFirstItem(stringList, callback) {
 /* Task 1: `counterMaker`
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
- * 1. What is the difference between counter1 and counter2?
+ * 1. What is the difference between counter1 and counter2? The difference between the 2 is that counter1 is is function scoped and can only be called using the function countermaker.
  * 
- * 2. Which of the two uses a closure? How can you tell?
+ * 2. Which of the two uses a closure? How can you tell?c Counter1 uses closure as it has a return function inside which can only be accessed inside that function.
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? counter1 would be used when counting hits inside a game or calling the funciton to add 2 counts together from different data. Counter 2 would be go to just act as a regualar counter to be called into a set function.
  *
 */
 
@@ -56,14 +56,15 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(sport){
-  return function(){
-    const score = Math.floor(Math.random() *3);
-    console.log(score)
-  }
+function inning(sport){  
+  let score = 0;
+  for(var i=1; i <= sport; i++){
+    var runs = Math.floor(Math.random() *3);      
+    console.log(runs) 
+ }
 }
-const baseBall = inning();
-baseBall();
+  inning();
+
 
 /* Task 3: finalScore()
 
@@ -78,16 +79,19 @@ finalScore(inning, 9) might return:
 }
 
 */ 
+// create function finalScore so it calls back inning
+//add innings together
+//return final score as an object
 
-function finalScore(inning){
-  return function(){
-    inning = score *9;
-    return `Home: ${score}`;
+function finalScore(callback, sport){
+  const final = (sport);
+  callback(final);
   }
+finalScore(inning,9);
 
   /*Code Here*/
 
-}
+
 
 /* Task 4: 
 
