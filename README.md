@@ -41,7 +41,7 @@ Find the file `index.js` and complete the tasks.
 
 Edit the `ReadMe` file with your answers.
 
-1. In your own words, define closure (1-2 sentences).
+1. In your own words, define closure (1-2 sentences). Closure is where the variables called inside a function only exsist inside that function. Calling the function outside works but you can not effect the variable outside of the function.
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -62,9 +62,9 @@ dansRoll();
 dansRoll();
 ```
 
-a. Where is closure used in this code? How can you tell?
-b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+a. Where is closure used in this code? How can you tell? The closure happens on line 49 with the return statement returning a function. Everything inside that function is locked.
+b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change? The text "rolled a" will remain the same. Name and number logged will change, however the name will change only when a new parameter(name) is passed in. The number will change every roll unless the function is altered.
+c. What is the lexical scope of `newRoll`?  newRoll will generate a random number and mulitple it by 6 each time, the random number will always be a whole number with the use of Math.Floor.
 
 ### Task 2c - Exit Ticket
 

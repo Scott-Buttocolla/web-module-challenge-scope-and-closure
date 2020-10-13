@@ -14,6 +14,7 @@
  * Invoking `processFirstItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'foofoo'.
 */
+const stringList = ['foo', 'bar'];
 function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
@@ -26,11 +27,11 @@ function processFirstItem(stringList, callback) {
 /* Task 1: `counterMaker`
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
- * 1. What is the difference between counter1 and counter2?
+ * 1. What is the difference between counter1 and counter2? The difference between the 2 is that counter1 is is function scoped and can only be called using the function countermaker.
  * 
- * 2. Which of the two uses a closure? How can you tell?
+ * 2. Which of the two uses a closure? How can you tell?c Counter1 uses closure as it has a return function inside which can only be accessed inside that function.
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? counter1 would be used when counting hits inside a game or calling the funciton to add 2 counts together from different data. Counter 2 would be go to just act as a regualar counter to be called into a set function.
  *
 */
 
@@ -56,11 +57,11 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){ 
+  let runs = Math.floor(Math.random() *3);
+  return runs;
 }
+
 
 /* Task 3: finalScore()
 
@@ -75,13 +76,22 @@ finalScore(inning, 9) might return:
 }
 
 */ 
+// create function finalScore so it calls back inning
+//add innings together
+//return final score as an object
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
-}
-
+function finalScore(callback, index){
+  let home = 0;
+  let away = 0;
+  const result = [];
+  for(let i = 1; i <= index; i++){    
+    home += callback();
+    away += callback(); 
+    result.push(`${i} inning: homeTeam ${home} - awayTeam ${away}`)
+    }
+   return result; //{"Home": home, "Away": away};
+  }
+console.log(finalScore(inning,9));
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -103,8 +113,12 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
 
+
+
+
+function scoreboard(callback, callback1, index){
+  return finalScore(callback1,index)
+}
+console.log(scoreboard(finalScore, inning,9));
 
