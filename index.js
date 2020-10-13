@@ -14,6 +14,7 @@
  * Invoking `processFirstItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'foofoo'.
 */
+const stringList = ['foo', 'bar'];
 function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
@@ -56,14 +57,10 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(sport){  
-  let score = 0;
-  for(var i=1; i <= sport; i++){
-    var runs = Math.floor(Math.random() *3);      
-    console.log(runs) 
- }
+function inning(){ 
+  let runs = Math.floor(Math.random() *3);
+  return runs;
 }
-  inning();
 
 
 /* Task 3: finalScore()
@@ -83,16 +80,18 @@ finalScore(inning, 9) might return:
 //add innings together
 //return final score as an object
 
-function finalScore(callback, sport){
-  const final = (sport);
-  callback(final);
+function finalScore(callback, index){
+  let home = 0;
+  let away = 0;
+  const result = [];
+  for(let i = 1; i <= index; i++){    
+    home += callback();
+    away += callback(); 
+    result.push(`${i} inning: homeTeam ${home} - awayTeam ${away}`)
+    }
+   return result; //{"Home": home, "Away": away};
   }
-finalScore(inning,9);
-
-  /*Code Here*/
-
-
-
+console.log(finalScore(inning,9));
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -114,8 +113,12 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
 
+
+
+
+function scoreboard(callback, callback1, index){
+  return finalScore(callback1,index)
+}
+console.log(scoreboard(finalScore, inning,9));
 
